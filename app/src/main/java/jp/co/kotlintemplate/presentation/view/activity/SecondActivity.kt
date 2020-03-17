@@ -1,16 +1,16 @@
 package jp.co.kotlintemplate.presentation.view.activity
 
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentTransaction
-import android.support.v4.view.GravityCompat
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.widget.Toolbar
+import androidx.fragment.app.Fragment
+import androidx.core.view.GravityCompat
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.widget.Toolbar
 import android.util.Log
 import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
+import dagger.android.HasAndroidInjector
 import jp.co.kotlintemplate.R
 import jp.co.kotlintemplate.databinding.ActivitySecondBinding
 import jp.co.kotlintemplate.extension.addBug
@@ -19,11 +19,12 @@ import jp.co.kotlintemplate.presentation.view.fragment.ToolsFragment
 import jp.co.kotlintemplate.presentation.viewmodel.activity.SecondActivityViewModel
 import javax.inject.Inject
 
-private val TAG = "SecondActivity"
+private const val TAG = "SecondActivity"
 
-class SecondActivity : BaseActivity(), HasSupportFragmentInjector {
+class SecondActivity : BaseActivity(), HasAndroidInjector {
     @Inject
-    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+
     @Inject
     lateinit var viewModel: SecondActivityViewModel
 
@@ -80,7 +81,7 @@ class SecondActivity : BaseActivity(), HasSupportFragmentInjector {
         replaceContainer(GalleryFragment.newInstance())
     }
 
-    override fun supportFragmentInjector() = this.fragmentInjector
+    override fun androidInjector(): AndroidInjector<Any> = this.androidInjector
 
     private fun replaceContainer(fragment: Fragment) {
         supportFragmentManager.beginTransaction().run {

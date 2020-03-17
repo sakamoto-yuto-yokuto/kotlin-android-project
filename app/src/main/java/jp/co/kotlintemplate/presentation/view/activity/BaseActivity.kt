@@ -1,7 +1,7 @@
 package jp.co.kotlintemplate.presentation.view.activity
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import jp.co.kotlintemplate.presentation.lifecycle.DisposableObserver
 
 abstract class BaseActivity : AppCompatActivity() {

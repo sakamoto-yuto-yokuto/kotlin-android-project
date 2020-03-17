@@ -7,16 +7,16 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     flavorDimensions "default"
 
     defaultConfig {
         applicationId "jp.co.kotlintemplate"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField 'String', 'URL_BASE', '"http://your.url.base/"'
     }
@@ -54,23 +54,20 @@ android {
 //        disable 'GoogleAppIndexingWarning'
 //        baseline file("lint-baseline.xml")
 //    }
-
-    kotlin { experimental { coroutines "enable" } }
 }
 
-ext.coroutines_version = "1.0.1"
-ext.support_version = "28.0.0"
-ext.arch_runtime_version = "1.1.1"
-ext.arch_version = "1.1.1"
-ext.dagger_version = "2.17"
-ext.moshi_version = "1.5.0"
-ext.kotshi_version = "1.0.5"
-ext.retrofit_version = "2.4.0"
-ext.orma_version = "5.0.2"
-ext.glide_version = "4.8.0"
-ext.okhttp_version = "3.9.0"
-
 dependencies {
+    def coroutines_version = "1.0.1"
+    def support_version = "1.1.0"
+    def lifecycle_version = "2.2.0"
+    def dagger_version = "2.25.2"
+    def moshi_version = "1.5.0"
+    def kotshi_version = "1.0.5"
+    def retrofit_version = "2.4.0"
+    def orma_version = "6.0.2"
+    def glide_version = "4.10.0"
+    def okhttp_version = "3.9.0"
+
     // kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
@@ -79,22 +76,22 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutines_version"
 
     // support lib
-    implementation "com.android.support:appcompat-v7:$support_version"
-    implementation "com.android.support:recyclerview-v7:$support_version"
-    implementation "com.android.support:cardview-v7:$support_version"
-    implementation "com.android.support:design:$support_version"
-    implementation "com.android.support.constraint:constraint-layout:1.1.3"
+    implementation "androidx.appcompat:appcompat:$support_version"
+    implementation "androidx.recyclerview:recyclerview:$support_version"
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation "com.google.android.material:material:$support_version"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     // architecture components
-    implementation "android.arch.lifecycle:runtime:$arch_runtime_version"
-    implementation "android.arch.lifecycle:extensions:$arch_version"
-    implementation "android.arch.lifecycle:reactivestreams:$arch_version"
-    implementation 'com.android.support:support-v4:28.0.0'
-    kapt "android.arch.lifecycle:compiler:$arch_version"
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // rxBinding
-    implementation 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.4.0'
-    implementation 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7-kotlin:0.4.0'
+    implementation 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.1'
+    implementation 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7-kotlin:1.0.1'
 
     // dagger
     implementation "com.google.dagger:dagger:$dagger_version"
@@ -126,8 +123,8 @@ dependencies {
 
     // unit test
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.2', {
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
@@ -135,7 +132,4 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
-kapt {
-    generateStubs = true
-    correctErrorTypes = true
-}
+kapt.correctErrorTypes = true

@@ -1,6 +1,6 @@
 package jp.co.kotlintemplate.data.repository
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import jp.co.kotlintemplate.data.entity.User
 import jp.co.kotlintemplate.domain.model.LoginChallenge
 import jp.co.kotlintemplate.domain.model.LoginResult

@@ -1,8 +1,8 @@
 package jp.co.kotlintemplate.extension
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.Transformations
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 
 fun <X> MutableLiveData<X>.default(initialValue: X) = apply { setValue(initialValue) }
 fun <X, Y> LiveData<X>.switchMap(func: (X) -> LiveData<Y>) = Transformations.switchMap(this, func)

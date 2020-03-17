@@ -1,6 +1,6 @@
 package jp.co.kotlintemplate.presentation.view.fragment
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.os.Bundle
 import jp.co.kotlintemplate.presentation.lifecycle.DisposableObserver
 

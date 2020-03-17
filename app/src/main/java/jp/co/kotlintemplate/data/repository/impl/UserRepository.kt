@@ -1,8 +1,8 @@
 package jp.co.kotlintemplate.data.repository.impl
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import io.reactivex.schedulers.Schedulers
 import jp.co.kotlintemplate.data.entity.OrmaDatabase
 import jp.co.kotlintemplate.data.entity.User

@@ -1,7 +1,7 @@
 package jp.co.kotlintemplate.presentation.viewmodel.adapter
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import jp.co.kotlintemplate.presentation.viewmodel.BaseViewModel
 import javax.inject.Inject
 

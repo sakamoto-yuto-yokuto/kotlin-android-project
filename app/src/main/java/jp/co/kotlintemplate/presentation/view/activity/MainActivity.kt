@@ -1,9 +1,9 @@
 package jp.co.kotlintemplate.presentation.view.activity
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.Observer
+import androidx.lifecycle.Observer
 import android.content.Intent
-import android.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import dagger.android.AndroidInjection
 import jp.co.kotlintemplate.R
