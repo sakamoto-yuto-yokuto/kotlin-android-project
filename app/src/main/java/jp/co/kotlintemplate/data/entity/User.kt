@@ -13,9 +13,9 @@ data class User(
 
     @Getter
     fun getName() = this.name
-    fun setName(name: String?) = { this.name = name }
+    fun setName(name: String?) { this.name = name }
 
     @Getter
     fun getPassword() = this.password
-    fun setPassword(password: String?) = { this.password = password }
+    fun setPassword(password: String?) { this.password = password }
 }

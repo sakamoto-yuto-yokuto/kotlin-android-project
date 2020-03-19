@@ -25,7 +25,7 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        this.binding.setLifecycleOwner(this)
+        this.binding.lifecycleOwner = this
         this.binding.viewModel = this.viewModel
 
         this.viewModel.loginChallenge.observe(this, Observer<LoginChallenge> {

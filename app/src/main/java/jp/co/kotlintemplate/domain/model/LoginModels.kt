@@ -16,8 +16,8 @@ data class LoginResult(
         @Json(name = "token") val token: String? = null
 ) {
     companion object {
-        @JvmField val RESULT_OK = "OK"
-        @JvmField val RESULT_NG = "NG"
+        const val RESULT_OK = "OK"
+        const val RESULT_NG = "NG"
     }
 
     fun isSuccess(): Boolean {

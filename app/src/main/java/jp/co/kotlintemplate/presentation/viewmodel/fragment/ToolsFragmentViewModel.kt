@@ -7,10 +7,7 @@ import jp.co.kotlintemplate.extension.addAll
 import jp.co.kotlintemplate.extension.default
 import jp.co.kotlintemplate.extension.map
 import jp.co.kotlintemplate.presentation.viewmodel.BaseViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 private const val FIRST_LOAD_DATA_COUNT = 100
@@ -29,12 +26,12 @@ class ToolsFragmentViewModel @Inject constructor() : BaseViewModel() {
 
     fun loadNextPage() = GlobalScope.launch {
         if (pageIndex <= MAX_PAGE_INDEX) {
-            async {
+            withContext(Dispatchers.Default) {
                 delay(2000)
                 val startIndex = FIRST_LOAD_DATA_COUNT + pageIndex * ADD_PAGE_ITEM_COUNT
                 val endIndex = startIndex + ADD_PAGE_ITEM_COUNT
                 createToolList(startIndex, endIndex)
-            }.await().let {
+            }.let {
                 _tools.addAll(it)
                 pageIndex++
             }

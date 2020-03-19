@@ -10,7 +10,6 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     AndroidInjectionModule::class,
-//    AndroidSupportInjectionModule::class,
     AppModule::class,
     ActivityModule::class,
     FrameworkModule::class,
@@ -19,7 +18,4 @@ import javax.inject.Singleton
 interface AppComponent : AndroidInjector<App> {
     @Component.Factory
     abstract class Factory : AndroidInjector.Factory<App>
-
-//    @Component.Builder
-//    abstract class Builder : AndroidInjector.Factory<App>
 }
