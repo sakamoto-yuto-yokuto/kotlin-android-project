@@ -1,9 +1,8 @@
 package jp.co.kotlintemplate.framework.dagger
 
+import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
-import dagger.android.AndroidInjector
-import dagger.android.support.AndroidSupportInjectionModule
 import jp.co.kotlintemplate.presentation.App
 import javax.inject.Singleton
 
@@ -15,7 +14,15 @@ import javax.inject.Singleton
     FrameworkModule::class,
     RepositoryModule::class
 ])
-interface AppComponent : AndroidInjector<App> {
-    @Component.Factory
-    abstract class Factory : AndroidInjector.Factory<App>
+interface AppComponent {
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: App): Builder
+
+        fun build(): AppComponent
+    }
+
+    // application
+    fun inject(application: App)
 }
